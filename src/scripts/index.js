@@ -1,6 +1,22 @@
-import "regenerator-runtime"; /* for async await transpile */
-import "../styles/main.scss";
-import "./data-controller";
-import "./app";
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
-console.log("Hello Coders! :)");
+import 'regenerator-runtime';
+import '../styles/main.scss';
+import swRegister from './utils/sw-register';
+import App from './views/app';
+
+const app = new App({
+  button: document.querySelector('#hamburgerButton'),
+  drawer: document.querySelector('#navigation'),
+  content: document.querySelector('#main'),
+});
+
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', () => {
+  app.renderPage();
+  swRegister();
+});

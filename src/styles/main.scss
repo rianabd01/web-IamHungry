@@ -2,14 +2,15 @@ $primary-color: #468578;
 $second-color: #f8fae5;
 $third-color: #996055;
 $fourth-color: #e0c097;
-$text-dark-color: #2e2e2e;
+$text-dark-color: #222222;
 $text-light-color: #f8fae5;
+$shadow: 0px 0px 8px -2px #222222;
 
 body {
   margin: 0;
   // padding: 25px 50px;
   background-color: $second-color;
-  font-family: "Libre Baskerville", serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 0.8em;
 }
 
@@ -19,7 +20,7 @@ body {
 
 a,
 button,
-input[type="text"],
+input[type='text'],
 textarea {
   min-width: 44px;
   min-height: 44px;
@@ -104,15 +105,29 @@ textarea {
 }
 
 .hero {
+  .image-hero {
+    // position: absolute;
+    // z-index: 0;
+    img,
+    source {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 500px;
+      min-height: 250px;
+    }
+  }
   display: flex;
-  background-image: url("../public/images/heros/hero-image_1.jpg");
-  background-position: center;
-  background-size: cover;
-  min-height: 250px;
+  flex-direction: column;
+  // background-image: url('../public/images/hero-image_1.jpg');
+  // background-position: center;
+  // background-size: cover;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   p {
-    text-align: center;
+    position: absolute;
+    align-self: center;
+    padding: 2rem;
     font-size: 2.5em;
     text-shadow: 1px 2px 1px $text-dark-color;
     color: $text-light-color;
@@ -120,7 +135,7 @@ textarea {
 }
 
 main {
-  padding: 10px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -136,32 +151,41 @@ main {
     font-size: 1.25em;
     color: $text-dark-color;
   }
+  #loading {
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.25em;
+    text-decoration: underline;
+    color: #363636;
+  }
   .menu-items {
-    padding: 10px;
+    padding: 1rem;
     max-width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-
     gap: 4rem 1rem;
+
     .menu-item {
-      background-color: $fourth-color;
-      padding: 20px;
+      // background-color: $fourth-color;
+      padding: 1rem;
       height: max-content;
-      border-radius: 0.5rem;
+      border-radius: 0.25rem;
+      box-shadow: $shadow;
       figure {
         width: fit-content;
         margin: auto;
         img {
           max-width: 100%;
           display: block;
-          border-radius: 0.5rem;
+          border-radius: 0.25rem;
           height: auto;
           object-fit: cover;
         }
         .image-caption {
           display: flex;
           justify-content: space-between;
-          margin-top: 10px;
+          align-items: center;
+          margin-top: 0.5rem;
           color: $text-dark-color;
           figcaption {
             span {
@@ -176,12 +200,147 @@ main {
         .item-name {
           text-transform: uppercase;
           color: $text-dark-color;
+          a {
+            display: flex;
+            width: max-content;
+            min-width: 44px;
+            min-height: 44px;
+            text-decoration: none;
+            color: $text-dark-color;
+            text-transform: capitalize;
+            align-items: center;
+          }
         }
         .item-description {
           color: $text-dark-color;
           font-style: italic;
         }
       }
+    }
+  }
+  #restaurant {
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+    }
+    a {
+      display: block;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    * {
+      color: $text-dark-color;
+    }
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: $shadow;
+    img {
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .details-description {
+      .address-detail {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .restaurant-description {
+        font-size: 1em;
+      }
+      .menu {
+        margin-top: 2rem;
+        h3 {
+          text-align: center;
+        }
+        .menu-type {
+          display: flex;
+          margin: 1rem auto;
+          // margin-top: 1rem;
+          padding: 2rem;
+          box-shadow: $shadow;
+          border-radius: 0.25rem;
+          width: 90%;
+          ul {
+            padding: 0;
+            margin: 0.5rem;
+          }
+          li {
+            margin: 0.25rem;
+            list-style-type: none;
+            text-align: center;
+          }
+          .menu-foods {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .menu-drinks {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      }
+      .review {
+        margin-top: 2rem;
+        h3 {
+          text-align: center;
+        }
+        .review-list {
+          display: flex;
+          flex-direction: column;
+          margin-top: 2rem;
+          overflow: scroll;
+          height: 10rem;
+          ul {
+            margin: 1rem auto;
+            padding: 0;
+          }
+          li {
+            list-style-type: none;
+            text-align: center;
+            margin: 0.25rem;
+          }
+          .review-user {
+            font-size: 1.5em;
+          }
+          .review-comment {
+            text-align: center;
+            font-weight: 700;
+          }
+          .review-date {
+            font-size: 0.75em;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+  #favorite-container {
+    // display: none;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    .favorite-button {
+      display: block;
+      background-color: $primary-color;
+      border: none;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      box-shadow: $shadow;
+      cursor: pointer;
+      font-size: 1.5em;
+    }
+    .favorite-button-on {
+      background-color: #222222;
     }
   }
 }
@@ -229,11 +388,28 @@ footer {
   }
   main {
     .menu-items {
-      padding: 25px;
+      padding: 2.5rem;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 1rem;
       .menu-item {
         padding: 25px;
+      }
+    }
+    #restaurant {
+      width: 50%;
+      padding: 1.5rem;
+      .details-description {
+        .menu {
+          margin-top: 2rem;
+          .menu-type {
+            .menu-foods {
+              flex: 1;
+            }
+            .menu-drinks {
+              flex: 1;
+            }
+          }
+        }
       }
     }
   }
