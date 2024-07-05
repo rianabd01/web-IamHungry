@@ -16,8 +16,8 @@ fs.readdirSync(target).forEach((image) => {
     .toFile(
       path.resolve(
         __dirname,
-        `${destination}/${image.split('.').slice(0, -1).join('.')}-large.jpg`
-      )
+        `${destination}/${image.split('.').slice(0, -1).join('.')}-large.jpg`,
+      ),
     );
 
   // mengubah ukuran gambar dengan lebar 480px, dengan prefix -small.jpg
@@ -26,7 +26,7 @@ fs.readdirSync(target).forEach((image) => {
     .toFile(
       path.resolve(
         __dirname,
-        `${destination}/${image.split('.').slice(0, -1).join('.')}-small.jpg`
-      )
+        `${destination}/${image.split('.').slice(0, -1).join('.')}-small.jpg`,
+      ),
     );
 });
